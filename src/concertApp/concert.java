@@ -18,6 +18,10 @@ public class concert {
 
     private Date dateStart;
 
+    private Date dateEnd;
+    
+    private String location;
+    
     public int getConcertId() {
         return concertId;
     }
@@ -58,7 +62,4 @@ public class concert {
         this.location = location;
     }
 
-    private Date dateEnd;
-
-    private String location;
 }
