@@ -10,8 +10,9 @@ package concertApp;
  */
 public class purchase_history {
     private int historyId;
-    private int userId;
     private int pembelianId;
+    private int userId;
+
     
     public void setHistoryId(int historyId){
         this.historyId = historyId;
@@ -25,6 +26,13 @@ public class purchase_history {
     }
     public int getPembelianId(){
         return pembelianId;
+    }
+    public void setUserId(users user) {
+        this.userId = user.getUserId();
+    }
+
+    public int getUserId() {
+        return userId;
     }
     
 }
