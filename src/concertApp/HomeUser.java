@@ -8,12 +8,12 @@ package concertApp;
  *
  * @author muhammad noval aula
  */
-public class HomePage extends javax.swing.JFrame {
+public class HomeUser extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePage
      */
-    public HomePage() {
+    public HomeUser() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -67,29 +67,26 @@ public class HomePage extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Laporan");
+        jLabel2.setText("Beli Tiket");
 
-        icon_ticket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-report-70.png"))); // NOI18N
+        icon_ticket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-ticket-70.png"))); // NOI18N
 
         javax.swing.GroupLayout buyTicketBtnLayout = new javax.swing.GroupLayout(buyTicketBtn);
         buyTicketBtn.setLayout(buyTicketBtnLayout);
         buyTicketBtnLayout.setHorizontalGroup(
             buyTicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buyTicketBtnLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(buyTicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(buyTicketBtnLayout.createSequentialGroup()
-                        .addComponent(icon_ticket1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buyTicketBtnLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(44, 44, 44))))
+                    .addComponent(jLabel2)
+                    .addComponent(icon_ticket1))
+                .addGap(40, 40, 40))
         );
         buyTicketBtnLayout.setVerticalGroup(
             buyTicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buyTicketBtnLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(icon_ticket1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(icon_ticket1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(14, 14, 14))
@@ -285,20 +282,21 @@ public class HomePage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage().setVisible(true);
+                new HomeUser().setVisible(true);
             }
         });
     }
