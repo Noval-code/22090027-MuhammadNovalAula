@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package concertApp;
+package concertApp.admin;
 
 /**
  *
  * @author muhammad noval aula
  */
-public class HomeUser extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePage
      */
-    public HomeUser() {
+    public HomePage() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -29,7 +29,7 @@ public class HomeUser extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
-        buyTicketBtn = new javax.swing.JPanel();
+        ReportBtn = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         icon_ticket1 = new javax.swing.JLabel();
         scheduleBtn = new javax.swing.JPanel();
@@ -38,9 +38,15 @@ public class HomeUser extends javax.swing.JFrame {
         exitBtn = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         icon_ticket3 = new javax.swing.JLabel();
-        addTConcertBtn = new javax.swing.JPanel();
+        addConcertBtn = new javax.swing.JPanel();
         label_addConcert = new javax.swing.JLabel();
         concert_icon = new javax.swing.JLabel();
+        TicketBtn = new javax.swing.JPanel();
+        label_addConcert1 = new javax.swing.JLabel();
+        concert_icon1 = new javax.swing.JLabel();
+        ScannerBtn = new javax.swing.JPanel();
+        label_addConcert2 = new javax.swing.JLabel();
+        concert_icon2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -58,35 +64,38 @@ public class HomeUser extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        buyTicketBtn.setBackground(new java.awt.Color(204, 204, 255));
-        buyTicketBtn.setPreferredSize(new java.awt.Dimension(165, 131));
-        buyTicketBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        ReportBtn.setBackground(new java.awt.Color(204, 204, 255));
+        ReportBtn.setPreferredSize(new java.awt.Dimension(165, 131));
+        ReportBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buyTicketBtnMouseClicked(evt);
+                ReportBtnMouseClicked(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Beli Tiket");
+        jLabel2.setText("Laporan");
 
-        icon_ticket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-ticket-70.png"))); // NOI18N
+        icon_ticket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-report-70.png"))); // NOI18N
 
-        javax.swing.GroupLayout buyTicketBtnLayout = new javax.swing.GroupLayout(buyTicketBtn);
-        buyTicketBtn.setLayout(buyTicketBtnLayout);
-        buyTicketBtnLayout.setHorizontalGroup(
-            buyTicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buyTicketBtnLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addGroup(buyTicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(icon_ticket1))
-                .addGap(40, 40, 40))
+        javax.swing.GroupLayout ReportBtnLayout = new javax.swing.GroupLayout(ReportBtn);
+        ReportBtn.setLayout(ReportBtnLayout);
+        ReportBtnLayout.setHorizontalGroup(
+            ReportBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportBtnLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(ReportBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReportBtnLayout.createSequentialGroup()
+                        .addComponent(icon_ticket1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportBtnLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(44, 44, 44))))
         );
-        buyTicketBtnLayout.setVerticalGroup(
-            buyTicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buyTicketBtnLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(icon_ticket1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+        ReportBtnLayout.setVerticalGroup(
+            ReportBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportBtnLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(icon_ticket1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(14, 14, 14))
@@ -155,7 +164,7 @@ public class HomeUser extends javax.swing.JFrame {
                     .addGroup(exitBtnLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(icon_ticket3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         exitBtnLayout.setVerticalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,10 +176,11 @@ public class HomeUser extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        addTConcertBtn.setBackground(new java.awt.Color(204, 204, 255));
-        addTConcertBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        addConcertBtn.setBackground(new java.awt.Color(204, 204, 255));
+        addConcertBtn.setPreferredSize(new java.awt.Dimension(165, 131));
+        addConcertBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addTConcertBtnMouseClicked(evt);
+                addConcertBtnMouseClicked(evt);
             }
         });
 
@@ -179,27 +189,97 @@ public class HomeUser extends javax.swing.JFrame {
 
         concert_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-circus-70.png"))); // NOI18N
 
-        javax.swing.GroupLayout addTConcertBtnLayout = new javax.swing.GroupLayout(addTConcertBtn);
-        addTConcertBtn.setLayout(addTConcertBtnLayout);
-        addTConcertBtnLayout.setHorizontalGroup(
-            addTConcertBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addTConcertBtnLayout.createSequentialGroup()
-                .addGroup(addTConcertBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addTConcertBtnLayout.createSequentialGroup()
+        javax.swing.GroupLayout addConcertBtnLayout = new javax.swing.GroupLayout(addConcertBtn);
+        addConcertBtn.setLayout(addConcertBtnLayout);
+        addConcertBtnLayout.setHorizontalGroup(
+            addConcertBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addConcertBtnLayout.createSequentialGroup()
+                .addGroup(addConcertBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addConcertBtnLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(label_addConcert))
-                    .addGroup(addTConcertBtnLayout.createSequentialGroup()
+                    .addGroup(addConcertBtnLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(concert_icon)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-        addTConcertBtnLayout.setVerticalGroup(
-            addTConcertBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTConcertBtnLayout.createSequentialGroup()
+        addConcertBtnLayout.setVerticalGroup(
+            addConcertBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addConcertBtnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(concert_icon, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_addConcert)
+                .addGap(14, 14, 14))
+        );
+
+        TicketBtn.setBackground(new java.awt.Color(204, 204, 255));
+        TicketBtn.setPreferredSize(new java.awt.Dimension(165, 131));
+        TicketBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TicketBtnMouseClicked(evt);
+            }
+        });
+
+        label_addConcert1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_addConcert1.setText("Tambah Tiket");
+
+        concert_icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-ticket-70.png"))); // NOI18N
+
+        javax.swing.GroupLayout TicketBtnLayout = new javax.swing.GroupLayout(TicketBtn);
+        TicketBtn.setLayout(TicketBtnLayout);
+        TicketBtnLayout.setHorizontalGroup(
+            TicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TicketBtnLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(concert_icon1)
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TicketBtnLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_addConcert1)
+                .addGap(25, 25, 25))
+        );
+        TicketBtnLayout.setVerticalGroup(
+            TicketBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TicketBtnLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(concert_icon1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_addConcert1)
+                .addGap(14, 14, 14))
+        );
+
+        ScannerBtn.setBackground(new java.awt.Color(204, 204, 255));
+        ScannerBtn.setPreferredSize(new java.awt.Dimension(165, 131));
+        ScannerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ScannerBtnMouseClicked(evt);
+            }
+        });
+
+        label_addConcert2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_addConcert2.setText("Scan QR");
+
+        concert_icon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-qr-code-70.png"))); // NOI18N
+
+        javax.swing.GroupLayout ScannerBtnLayout = new javax.swing.GroupLayout(ScannerBtn);
+        ScannerBtn.setLayout(ScannerBtnLayout);
+        ScannerBtnLayout.setHorizontalGroup(
+            ScannerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ScannerBtnLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(ScannerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_addConcert2)
+                    .addComponent(concert_icon2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ScannerBtnLayout.setVerticalGroup(
+            ScannerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ScannerBtnLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(concert_icon2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_addConcert2)
                 .addGap(14, 14, 14))
         );
 
@@ -208,28 +288,35 @@ public class HomeUser extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addTConcertBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buyTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73)
+                .addGap(153, 153, 153)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addConcertBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(TicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ReportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(scheduleBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(exitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                .addContainerGap(173, Short.MAX_VALUE))
+                    .addComponent(exitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(ScannerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(183, 183, 183)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(scheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTConcertBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(addConcertBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ScannerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buyTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                    .addComponent(ReportBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(81, 81, 81))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,19 +338,32 @@ public class HomeUser extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_exitBtnMouseClicked
 
-    private void addTConcertBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addTConcertBtnMouseClicked
+    private void addConcertBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addConcertBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_addTConcertBtnMouseClicked
+        this.setVisible(false);
+        new Event().setVisible(true);
+    }//GEN-LAST:event_addConcertBtnMouseClicked
 
     private void scheduleBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleBtnMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        new schedule().setVisible(true);
+        new ScheduleAdmin().setVisible(true);
     }//GEN-LAST:event_scheduleBtnMouseClicked
 
-    private void buyTicketBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buyTicketBtnMouseClicked
+    private void ReportBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_buyTicketBtnMouseClicked
+        this.setVisible(false);
+        new Report().setVisible(true);
+
+    }//GEN-LAST:event_ReportBtnMouseClicked
+
+    private void TicketBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TicketBtnMouseClicked
+
+    private void ScannerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ScannerBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ScannerBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -282,29 +382,32 @@ public class HomeUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeUser().setVisible(true);
+                new HomePage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel addTConcertBtn;
-    private javax.swing.JPanel buyTicketBtn;
+    private javax.swing.JPanel ReportBtn;
+    private javax.swing.JPanel ScannerBtn;
+    private javax.swing.JPanel TicketBtn;
+    private javax.swing.JPanel addConcertBtn;
     private javax.swing.JLabel concert_icon;
+    private javax.swing.JLabel concert_icon1;
+    private javax.swing.JLabel concert_icon2;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JLabel icon_ticket1;
     private javax.swing.JLabel icon_ticket2;
@@ -315,6 +418,8 @@ public class HomeUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_addConcert;
+    private javax.swing.JLabel label_addConcert1;
+    private javax.swing.JLabel label_addConcert2;
     private javax.swing.JPanel scheduleBtn;
     // End of variables declaration//GEN-END:variables
 }

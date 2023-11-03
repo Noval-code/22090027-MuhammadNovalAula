@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package concertApp;
+package concertApp.admin;
 
 /**
  *
  * @author muhammad noval aula
  */
+import concertApp.admin.ScheduleAdmin;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class TambahTiket extends javax.swing.JFrame {
+public class Event extends javax.swing.JFrame {
 
     /**
      * Creates new form TambahTiket
@@ -26,7 +27,7 @@ public class TambahTiket extends javax.swing.JFrame {
     public ResultSet rs;
     Connection con = connection.koneksiDB.BukaKoneksi();
 
-    public TambahTiket() {
+    public Event() {
         initComponents();
         ShowSingerList();
     }
@@ -99,7 +100,7 @@ public class TambahTiket extends javax.swing.JFrame {
         Category_Txt = new javax.swing.JTextField();
         Country_Txt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        backHome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,7 +170,12 @@ public class TambahTiket extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Negara    :");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-60.png"))); // NOI18N
+        backHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-60.png"))); // NOI18N
+        backHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backHomeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,7 +185,7 @@ public class TambahTiket extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel5))
+                        .addComponent(backHome))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(415, 415, 415)
                         .addComponent(FindInput, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +227,7 @@ public class TambahTiket extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel5)
+                .addComponent(backHome)
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FindInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,7 +333,7 @@ public class TambahTiket extends javax.swing.JFrame {
                 ShowSingerList();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(schedule.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ScheduleAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_Save_BtnActionPerformed
 
@@ -345,7 +351,7 @@ public class TambahTiket extends javax.swing.JFrame {
             clear();
             ShowSingerList();
         } catch (SQLException ex) {
-            Logger.getLogger(schedule.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ScheduleAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_UpdateBtnActionPerformed
@@ -359,6 +365,13 @@ public class TambahTiket extends javax.swing.JFrame {
 
         SingerId_Txt.setEditable(false);
     }//GEN-LAST:event_SingerTableMouseClicked
+
+    private void backHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backHomeMouseClicked
+        // TODO add your handling code here:
+       
+        this.setVisible(false);
+        new HomePage().setVisible(true);
+    }//GEN-LAST:event_backHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -377,20 +390,21 @@ public class TambahTiket extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TambahTiket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TambahTiket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TambahTiket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TambahTiket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TambahTiket().setVisible(true);
+                new Event().setVisible(true);
             }
         });
     }
@@ -407,11 +421,11 @@ public class TambahTiket extends javax.swing.JFrame {
     private javax.swing.JTextField Singer_Txt;
     private javax.swing.JButton UndoBtn;
     private javax.swing.JButton UpdateBtn;
+    private javax.swing.JLabel backHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
