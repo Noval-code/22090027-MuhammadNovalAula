@@ -359,10 +359,14 @@ public class HomePage extends javax.swing.JFrame {
 
     private void TicketBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtnMouseClicked
         // TODO add your handling code here:
+        this.setVisible(false);
+        new Ticket().setVisible(true);
     }//GEN-LAST:event_TicketBtnMouseClicked
 
     private void ScannerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ScannerBtnMouseClicked
         // TODO add your handling code here:
+        this.setVisible(false);
+        new ScanQR().setVisible(true);
     }//GEN-LAST:event_ScannerBtnMouseClicked
 
     /**

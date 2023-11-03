@@ -27,7 +27,7 @@ public class Report extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        backHomeBtn = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -39,7 +39,12 @@ public class Report extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-60.png"))); // NOI18N
+        backHomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-50.png"))); // NOI18N
+        backHomeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backHomeBtnMouseClicked(evt);
+            }
+        });
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +91,7 @@ public class Report extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel1)
+                .addComponent(backHomeBtn)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -115,7 +120,7 @@ public class Report extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jLabel1))
+                        .addComponent(backHomeBtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jLabel2)))
@@ -159,6 +164,12 @@ public class Report extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void backHomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backHomeBtnMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new HomePage().setVisible(true);
+    }//GEN-LAST:event_backHomeBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -196,9 +207,9 @@ public class Report extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backHomeBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

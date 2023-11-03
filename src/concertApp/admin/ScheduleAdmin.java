@@ -152,7 +152,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
         jLabel1.setText("Jadwal konser");
 
-        backToMenuBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-60.png"))); // NOI18N
+        backToMenuBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-50.png"))); // NOI18N
         backToMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backToMenuBtnMouseClicked(evt);
@@ -168,7 +168,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                 .addComponent(backToMenuBtn)
                 .addGap(246, 246, 246)
                 .addComponent(jLabel1)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,7 +352,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(160, 160, 160)

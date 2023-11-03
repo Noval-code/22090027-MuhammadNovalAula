@@ -170,7 +170,7 @@ public class Event extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Negara    :");
 
-        backHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-60.png"))); // NOI18N
+        backHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-arrow-back-50.png"))); // NOI18N
         backHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backHomeMouseClicked(evt);
