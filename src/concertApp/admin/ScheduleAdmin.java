@@ -89,6 +89,49 @@ public class ScheduleAdmin extends javax.swing.JFrame {
 
     }
 
+    private void findSchedule() {
+        try {
+            st = con.createStatement();
+            String searchQuery = "SELECT * FROM schedule WHERE id_jadwal LIKE '%" + SearchField.getText()
+                    + "%' OR nama_musisi LIKE '%" + SearchField.getText()
+                    + "%' OR negara LIKE '%" + SearchField.getText()
+                    + "%' OR tanggal LIKE '%" + SearchField.getText()
+                    + "%' OR lokasi LIKE '%" + SearchField.getText() + "%'";
+            rs = st.executeQuery(searchQuery);
+
+            DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("ID Jadwal");
+            model.addColumn("Musisi");
+            model.addColumn("Negara");
+            model.addColumn("Tanggal");
+            model.addColumn("Lokasi");
+            model.addColumn("Kuota");
+
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                Object[] data = {
+                    rs.getString("id_jadwal"),
+                    rs.getString("nama_musisi"),
+                    rs.getString("negara"),
+                    rs.getString("tanggal"),
+                    rs.getString("lokasi"),
+                    rs.getString("kuota")
+                };
+                model.addRow(data);
+                Schedule_Table.setModel(model);
+
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(ScheduleAdmin.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+    }
+
     private void fillComboBox() {
         try {
             st = con.createStatement();
@@ -138,7 +181,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Schedule_Table = new javax.swing.JTable();
         DeleteBtn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        SearchField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -245,7 +288,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(75, 30));
+        SearchField.setPreferredSize(new java.awt.Dimension(75, 30));
 
         jButton1.setText("Cari");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +346,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -346,13 +389,13 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                     .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(160, 160, 160)
@@ -466,6 +509,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        findSchedule();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -518,6 +562,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel Label_Singer;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JTable Schedule_Table;
+    private javax.swing.JTextField SearchField;
     private javax.swing.JTextField TXT_Country;
     private javax.swing.JTextField TXT_Date;
     private javax.swing.JTextField TXT_Location;
@@ -530,6 +575,5 @@ public class ScheduleAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

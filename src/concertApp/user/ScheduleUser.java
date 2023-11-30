@@ -41,7 +41,48 @@ public class ScheduleUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    
+    private void findSchedule() {
+        try {
+            st = con.createStatement();
+            String searchQuery = "SELECT * FROM schedule WHERE id_jadwal LIKE '%" + SearchField.getText()
+                    + "%' OR nama_musisi LIKE '%" + SearchField.getText()
+                    + "%' OR negara LIKE '%" + SearchField.getText()
+                    + "%' OR tanggal LIKE '%" + SearchField.getText()
+                    + "%' OR lokasi LIKE '%" + SearchField.getText() + "%'";
+            rs = st.executeQuery(searchQuery);
+
+            DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("ID Jadwal");
+            model.addColumn("Musisi");
+            model.addColumn("Negara");
+            model.addColumn("Tanggal");
+            model.addColumn("Lokasi");
+            model.addColumn("Kuota");
+
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                Object[] data = {
+                    rs.getString("id_jadwal"),
+                    rs.getString("nama_musisi"),
+                    rs.getString("negara"),
+                    rs.getString("tanggal"),
+                    rs.getString("lokasi"),
+                    rs.getString("kuota")
+                };
+                model.addRow(data);
+                Schedule_Table.setModel(model);
+
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(ScheduleAdmin.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+    }
 
     private void ShowSchedule() {
         try {
@@ -97,8 +138,8 @@ public class ScheduleUser extends javax.swing.JFrame {
         backToMenuBtn = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Schedule_Table = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        SearchField = new javax.swing.JTextField();
+        SearchBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -153,17 +194,12 @@ public class ScheduleUser extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Schedule_Table);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(75, 30));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        SearchField.setPreferredSize(new java.awt.Dimension(75, 30));
 
-        jButton1.setText("Cari");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SearchBtn.setText("Cari");
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SearchBtnActionPerformed(evt);
             }
         });
 
@@ -176,9 +212,9 @@ public class ScheduleUser extends javax.swing.JFrame {
                 .addGap(0, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
@@ -188,11 +224,11 @@ public class ScheduleUser extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,13 +253,10 @@ public class ScheduleUser extends javax.swing.JFrame {
         new HomePage().setVisible(true);
     }//GEN-LAST:event_backToMenuBtnMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        findSchedule();
+    }//GEN-LAST:event_SearchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,12 +302,12 @@ public class ScheduleUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Schedule_Table;
+    private javax.swing.JButton SearchBtn;
+    private javax.swing.JTextField SearchField;
     private javax.swing.JLabel backToMenuBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

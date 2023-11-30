@@ -6,6 +6,12 @@ package concertApp;
 
 import concertApp.admin.HomePage;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +22,10 @@ public class login_form extends javax.swing.JFrame {
     /**
      * Creates new form login_form
      */
+    public Statement st;
+    public ResultSet rs;
+    Connection con = connection.koneksiDB.BukaKoneksi();
+
     public login_form() {
         initComponents();
         setLocationRelativeTo(null);
@@ -166,11 +176,6 @@ public class login_form extends javax.swing.JFrame {
         BtnLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
         BtnLogin.setText("Masuk");
-        BtnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnLoginMouseClicked(evt);
-            }
-        });
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnLoginActionPerformed(evt);
@@ -185,6 +190,11 @@ public class login_form extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 153));
         jLabel2.setText("Buat akun");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(889, 372, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,19 +262,34 @@ public class login_form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PasswordFieldFocusLost
 
-    private void BtnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLoginMouseClicked
-        // TODO add your handling code here:
-        if (UsernameField.getText().equals("admin") && PasswordField.getText().equals("admin123")) {
-            this.setVisible(false);
-            new HomePage().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf username/ Password Salah!");
-        }
-    }//GEN-LAST:event_BtnLoginMouseClicked
-
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            st = con.createStatement();
+            String checkAccount = "SELECT * FROM account WHERE username = '" + UsernameField.getText() + "' AND password = '" + PasswordField.getText() + "'";
+            rs = st.executeQuery(checkAccount);
+
+            if (rs.next()) {
+                this.setVisible(false);
+                new HomePage().setVisible(true);
+                JOptionPane.showMessageDialog(rootPane, "anda berhasil masuk");
+                
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Maaf username/ Password Salah!");
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(login_form.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_BtnLoginActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new sigIn_form().setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
