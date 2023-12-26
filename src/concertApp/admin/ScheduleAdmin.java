@@ -4,13 +4,16 @@
  */
 package concertApp.admin;
 
-import concertApp.admin.HomePage;
+import concertApp.admin.HomeAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
@@ -41,14 +44,10 @@ public class ScheduleAdmin extends javax.swing.JFrame {
     }
 
     private void clear() {
-        TXT_ScheduleId.setText("");
-        CB_Singer.setSelectedItem("");
-        TXT_Country.setText("");
-        TXT_Date.setText("");
-        TXT_Location.setText("");
-        TXT_Qty.setText("");
-
-        TXT_ScheduleId.setEditable(true);
+        ScheduleId_Txt.setText("");
+        Date_Txt.setText("");
+        Location_Txt.setText("");
+        ScheduleId_Txt.setEditable(true);
 
     }
 
@@ -61,30 +60,32 @@ public class ScheduleAdmin extends javax.swing.JFrame {
 
             model.addColumn("ID Jadwal");
             model.addColumn("Musisi");
-            model.addColumn("Negara");
+            model.addColumn("Kategori");
             model.addColumn("Tanggal");
             model.addColumn("Lokasi");
-            model.addColumn("Kuota");
 
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged();
             model.setRowCount(0);
 
-            while (rs.next()) {
-                Object[] data = {
-                    rs.getString("id_jadwal"),
-                    rs.getString("nama_musisi"),
-                    rs.getString("negara"),
-                    rs.getString("tanggal"),
-                    rs.getString("lokasi"),
-                    rs.getString("kuota")
-                };
-                model.addRow(data);
+            if (rs.next()) {
+                do {
+
+                    Object[] data = {
+                        rs.getString("id_jadwal"),
+                        rs.getString("nama_musisi"),
+                        rs.getString("kategori"),
+                        rs.getString("tanggal"),
+                        rs.getString("lokasi")
+                    };
+                    model.addRow(data);
+                } while (rs.next());
+
+                // Set the model to the table outside of the loop
                 Schedule_Table.setModel(model);
-
             }
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -92,21 +93,20 @@ public class ScheduleAdmin extends javax.swing.JFrame {
     private void findSchedule() {
         try {
             st = con.createStatement();
-            String searchQuery = "SELECT * FROM schedule WHERE id_jadwal LIKE '%" + SearchField.getText()
-                    + "%' OR nama_musisi LIKE '%" + SearchField.getText()
-                    + "%' OR negara LIKE '%" + SearchField.getText()
-                    + "%' OR tanggal LIKE '%" + SearchField.getText()
-                    + "%' OR lokasi LIKE '%" + SearchField.getText() + "%'";
+            String searchQuery = "SELECT * FROM schedule WHERE id_jadwal LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR nama_musisi LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR kategori LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR tanggal LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR lokasi LIKE '%" + SearchField_Txt.getText() + "%'";
             rs = st.executeQuery(searchQuery);
 
             DefaultTableModel model = new DefaultTableModel();
 
             model.addColumn("ID Jadwal");
             model.addColumn("Musisi");
-            model.addColumn("Negara");
+            model.addColumn("Kategori");
             model.addColumn("Tanggal");
             model.addColumn("Lokasi");
-            model.addColumn("Kuota");
 
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged();
@@ -116,10 +116,9 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                 Object[] data = {
                     rs.getString("id_jadwal"),
                     rs.getString("nama_musisi"),
-                    rs.getString("negara"),
+                    rs.getString("kategori"),
                     rs.getString("tanggal"),
-                    rs.getString("lokasi"),
-                    rs.getString("kuota")
+                    rs.getString("lokasi")
                 };
                 model.addRow(data);
                 Schedule_Table.setModel(model);
@@ -166,23 +165,21 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         Label_Singer = new javax.swing.JLabel();
         Label_ScheduleId = new javax.swing.JLabel();
         Label_Country = new javax.swing.JLabel();
-        TXT_ScheduleId = new javax.swing.JTextField();
+        ScheduleId_Txt = new javax.swing.JTextField();
         CB_Singer = new javax.swing.JComboBox<>();
-        TXT_Country = new javax.swing.JTextField();
-        Label_Date = new javax.swing.JLabel();
-        TXT_Location = new javax.swing.JTextField();
+        Location_Txt = new javax.swing.JTextField();
         Label_Date1 = new javax.swing.JLabel();
         Label_Date2 = new javax.swing.JLabel();
-        TXT_Date = new javax.swing.JTextField();
-        TXT_Qty = new javax.swing.JTextField();
+        Date_Txt = new javax.swing.JTextField();
         SaveBtn = new javax.swing.JButton();
         UpdateBtn = new javax.swing.JButton();
         CancelBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Schedule_Table = new javax.swing.JTable();
         DeleteBtn = new javax.swing.JButton();
-        SearchField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        SearchField_Txt = new javax.swing.JTextField();
+        SearchBtn = new javax.swing.JButton();
+        CB_Category = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -230,10 +227,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         Label_ScheduleId.setText("Id Jadwal         :");
 
         Label_Country.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Label_Country.setText("Negara             :");
-
-        Label_Date.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Label_Date.setText("Kuota         :");
+        Label_Country.setText("Kategori           :");
 
         Label_Date1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Label_Date1.setText("Tanggal         :");
@@ -241,6 +235,9 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         Label_Date2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Label_Date2.setText("Lokasi         :");
 
+        SaveBtn.setBackground(new java.awt.Color(51, 24, 107));
+        SaveBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        SaveBtn.setForeground(new java.awt.Color(255, 255, 255));
         SaveBtn.setText("Simpan");
         SaveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +245,9 @@ public class ScheduleAdmin extends javax.swing.JFrame {
             }
         });
 
+        UpdateBtn.setBackground(new java.awt.Color(51, 24, 107));
+        UpdateBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        UpdateBtn.setForeground(new java.awt.Color(255, 255, 255));
         UpdateBtn.setText("Ubah");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +255,9 @@ public class ScheduleAdmin extends javax.swing.JFrame {
             }
         });
 
+        CancelBtn.setBackground(new java.awt.Color(51, 24, 107));
+        CancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        CancelBtn.setForeground(new java.awt.Color(255, 255, 255));
         CancelBtn.setText("Batal");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,14 +267,14 @@ public class ScheduleAdmin extends javax.swing.JFrame {
 
         Schedule_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID Jadwal", "Nama Musisi", "Negara", "Tanggal", "Lokasi", "Kuota"
+                "ID Jadwal", "Nama Musisi", "Negara", "Tanggal", "Lokasi"
             }
         ));
         Schedule_Table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -281,6 +284,9 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Schedule_Table);
 
+        DeleteBtn.setBackground(new java.awt.Color(51, 24, 107));
+        DeleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         DeleteBtn.setText("Hapus");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,14 +294,19 @@ public class ScheduleAdmin extends javax.swing.JFrame {
             }
         });
 
-        SearchField.setPreferredSize(new java.awt.Dimension(75, 30));
+        SearchField_Txt.setPreferredSize(new java.awt.Dimension(75, 30));
 
-        jButton1.setText("Cari");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SearchBtn.setBackground(new java.awt.Color(51, 24, 107));
+        SearchBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        SearchBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchBtn.setText("Cari");
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SearchBtnActionPerformed(evt);
             }
         });
+
+        CB_Category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day-1", "Day-2", "Day-3" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -316,39 +327,39 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CB_Singer, 0, 250, Short.MAX_VALUE)
-                                    .addComponent(TXT_ScheduleId)
-                                    .addComponent(TXT_Country))
-                                .addGap(91, 91, 91))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(SaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Label_Date2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Label_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Label_Date1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TXT_Date, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                .addComponent(TXT_Location)
-                                .addComponent(TXT_Qty))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(CB_Singer, 0, 250, Short.MAX_VALUE)
+                                            .addComponent(ScheduleId_Txt))
+                                        .addGap(91, 91, 91))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(SaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Label_Date2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Label_Date1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(21, 21, 21)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Date_Txt, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                        .addComponent(Location_Txt))))
+                            .addComponent(CB_Category, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SearchField_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
+                                .addComponent(SearchBtn))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,27 +374,21 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TXT_ScheduleId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ScheduleId_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_Date1)
-                    .addComponent(TXT_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Date_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label_Singer)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(CB_Singer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Label_Date2)
-                        .addComponent(TXT_Location, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Location_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_Country)
-                            .addComponent(TXT_Country, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label_Date)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(TXT_Qty, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(66, 66, 66)
+                    .addComponent(Label_Country)
+                    .addComponent(CB_Category, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,11 +396,11 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                     .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SearchField_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(160, 160, 160)
@@ -421,18 +426,18 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             st = con.createStatement();
-            String cekData = "SELECT * FROM schedule WHERE id_jadwal = '" + TXT_ScheduleId.getText() + "'";
+            String cekData = "SELECT * FROM schedule WHERE id_jadwal = '" + ScheduleId_Txt.getText() + "'";
             rs = st.executeQuery(cekData);
 
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "data sudah ada");
             } else {
-                String addData = "INSERT INTO schedule VALUES ('" + TXT_ScheduleId.getText()
+                String addData = "INSERT INTO schedule VALUES ('" + ScheduleId_Txt.getText()
                         + "','" + CB_Singer.getSelectedItem()
-                        + "','" + TXT_Country.getText()
-                        + "','" + TXT_Date.getText()
-                        + "','" + TXT_Location.getText()
-                        + "','" + TXT_Qty.getText() + "')";
+                        + "','" + CB_Category.getSelectedItem()
+                        + "','" + Date_Txt.getText()
+                        + "','" + Location_Txt.getText()
+                        + "')";
                 st.executeUpdate(addData);
                 JOptionPane.showMessageDialog(null, "Data berhasil disimpan ");
 
@@ -448,9 +453,9 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             String update = "UPDATE schedule SET nama_musisi = '" + CB_Singer.getSelectedItem()
-                    + "',negara = '" + TXT_Country.getText() + "',tanggal = '" + TXT_Date.getText()
-                    + "',lokasi = '" + TXT_Location.getText() + "',kuota = '" + TXT_Qty.getText()
-                    + "'WHERE id_jadwal = '" + TXT_ScheduleId.getText() + "'";
+                    + "',kategori = '" + CB_Category.getSelectedItem() + "',tanggal = '" + Date_Txt.getText()
+                    + "',lokasi = '" + Location_Txt.getText() 
+                    + "'WHERE id_jadwal = '" + ScheduleId_Txt.getText() + "'";
 
             st.executeUpdate(update);
             JOptionPane.showMessageDialog(null, "Data berhasil di update ");
@@ -469,14 +474,14 @@ public class ScheduleAdmin extends javax.swing.JFrame {
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
-        if (TXT_ScheduleId.getText().equals("")) {
+        if (ScheduleId_Txt.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Silahkan pilih data yang akan di hapus");
         } else {
             int jawab = JOptionPane.showConfirmDialog(null, "Data ini akan dihapus, lanjutkan?", "konfirmasi", JOptionPane.YES_NO_OPTION);
             if (jawab == 0) {
                 try {
                     st = con.createStatement();
-                    String sql = "DELETE FROM schedule WHERE id_jadwal = '" + TXT_ScheduleId.getText() + "'";
+                    String sql = "DELETE FROM schedule WHERE id_jadwal = '" + ScheduleId_Txt.getText() + "'";
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "data berhail di hapus");
                     ShowSchedule();
@@ -491,26 +496,25 @@ public class ScheduleAdmin extends javax.swing.JFrame {
 
     private void Schedule_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Schedule_TableMouseClicked
         // TODO add your handling code here:
-        TXT_ScheduleId.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 0).toString());
+        ScheduleId_Txt.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 0).toString());
         CB_Singer.setSelectedItem(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 1).toString());
-        TXT_Country.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 2).toString());
-        TXT_Date.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 3).toString());
-        TXT_Location.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 4).toString());
-        TXT_Qty.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 5).toString());
+        CB_Category.setSelectedItem(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 2).toString());
+        Date_Txt.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 3).toString());
+        Location_Txt.setText(Schedule_Table.getValueAt(Schedule_Table.getSelectedRow(), 4).toString());
 
-        TXT_ScheduleId.setEditable(false);
+        ScheduleId_Txt.setEditable(false);
     }//GEN-LAST:event_Schedule_TableMouseClicked
 
     private void backToMenuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backToMenuBtnMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        new HomePage().setVisible(true);
+        new HomeAdmin().setVisible(true);
     }//GEN-LAST:event_backToMenuBtnMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         // TODO add your handling code here:
         findSchedule();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SearchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -551,26 +555,24 @@ public class ScheduleAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB_Category;
     private javax.swing.JComboBox<String> CB_Singer;
     private javax.swing.JButton CancelBtn;
+    private javax.swing.JTextField Date_Txt;
     private javax.swing.JButton DeleteBtn;
     private javax.swing.JLabel Label_Country;
-    private javax.swing.JLabel Label_Date;
     private javax.swing.JLabel Label_Date1;
     private javax.swing.JLabel Label_Date2;
     private javax.swing.JLabel Label_ScheduleId;
     private javax.swing.JLabel Label_Singer;
+    private javax.swing.JTextField Location_Txt;
     private javax.swing.JButton SaveBtn;
+    private javax.swing.JTextField ScheduleId_Txt;
     private javax.swing.JTable Schedule_Table;
-    private javax.swing.JTextField SearchField;
-    private javax.swing.JTextField TXT_Country;
-    private javax.swing.JTextField TXT_Date;
-    private javax.swing.JTextField TXT_Location;
-    private javax.swing.JTextField TXT_Qty;
-    private javax.swing.JTextField TXT_ScheduleId;
+    private javax.swing.JButton SearchBtn;
+    private javax.swing.JTextField SearchField_Txt;
     private javax.swing.JButton UpdateBtn;
     private javax.swing.JLabel backToMenuBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

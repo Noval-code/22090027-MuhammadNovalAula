@@ -61,51 +61,53 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="CB_Singer" pref="250" max="32767" attributes="0"/>
-                                      <Component id="TXT_ScheduleId" max="32767" attributes="0"/>
-                                      <Component id="TXT_Country" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="SaveBtn" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="UpdateBtn" min="-2" pref="90" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="Label_Date2" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="Label_Date" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="Label_Date1" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="CB_Singer" pref="250" max="32767" attributes="0"/>
+                                              <Component id="ScheduleId_Txt" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="SaveBtn" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="UpdateBtn" min="-2" pref="90" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="Label_Date2" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="Label_Date1" min="-2" pref="135" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DeleteBtn" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="CancelBtn" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="Date_Txt" pref="250" max="32767" attributes="0"/>
+                                          <Component id="Location_Txt" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DeleteBtn" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="CancelBtn" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TXT_Date" pref="250" max="32767" attributes="0"/>
-                                  <Component id="TXT_Location" max="32767" attributes="0"/>
-                                  <Component id="TXT_Qty" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="CB_Category" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="SearchField" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="SearchField_Txt" min="-2" pref="187" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SearchBtn" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" alignment="1" min="-2" pref="879" max="-2" attributes="0"/>
                           </Group>
@@ -128,9 +130,9 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="TXT_ScheduleId" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="ScheduleId_Txt" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="Label_Date1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TXT_Date" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="Date_Txt" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -138,24 +140,15 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="CB_Singer" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="Label_Date2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TXT_Location" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="Location_Txt" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Label_Country" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TXT_Country" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="Label_Date" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="TXT_Qty" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="Label_Country" min="-2" max="-2" attributes="0"/>
+                      <Component id="CB_Category" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SaveBtn" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="UpdateBtn" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -164,12 +157,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="SearchField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="SearchField_Txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SearchBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="165" max="-2" attributes="0"/>
-                  <EmptySpace pref="261" max="32767" attributes="0"/>
+                  <EmptySpace pref="264" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -259,10 +252,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Negara             :"/>
+            <Property name="text" type="java.lang.String" value="Kategori           :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TXT_ScheduleId">
+        <Component class="javax.swing.JTextField" name="ScheduleId_Txt">
         </Component>
         <Component class="javax.swing.JComboBox" name="CB_Singer">
           <Properties>
@@ -274,17 +267,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="TXT_Country">
-        </Component>
-        <Component class="javax.swing.JLabel" name="Label_Date">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Kuota         :"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="TXT_Location">
+        <Component class="javax.swing.JTextField" name="Location_Txt">
         </Component>
         <Component class="javax.swing.JLabel" name="Label_Date1">
           <Properties>
@@ -302,12 +285,19 @@
             <Property name="text" type="java.lang.String" value="Lokasi         :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TXT_Date">
-        </Component>
-        <Component class="javax.swing.JTextField" name="TXT_Qty">
+        <Component class="javax.swing.JTextField" name="Date_Txt">
         </Component>
         <Component class="javax.swing.JButton" name="SaveBtn">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6b" green="18" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Simpan"/>
           </Properties>
           <Events>
@@ -316,6 +306,15 @@
         </Component>
         <Component class="javax.swing.JButton" name="UpdateBtn">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6b" green="18" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ubah"/>
           </Properties>
           <Events>
@@ -324,6 +323,15 @@
         </Component>
         <Component class="javax.swing.JButton" name="CancelBtn">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6b" green="18" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Batal"/>
           </Properties>
           <Events>
@@ -340,13 +348,12 @@
             <Component class="javax.swing.JTable" name="Schedule_Table">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="5">
+                  <Table columnCount="5" rowCount="5">
                     <Column editable="true" title="ID Jadwal" type="java.lang.Object"/>
                     <Column editable="true" title="Nama Musisi" type="java.lang.Object"/>
                     <Column editable="true" title="Negara" type="java.lang.Object"/>
                     <Column editable="true" title="Tanggal" type="java.lang.Object"/>
                     <Column editable="true" title="Lokasi" type="java.lang.Object"/>
-                    <Column editable="true" title="Kuota" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
@@ -358,26 +365,58 @@
         </Container>
         <Component class="javax.swing.JButton" name="DeleteBtn">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6b" green="18" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Hapus"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="SearchField">
+        <Component class="javax.swing.JTextField" name="SearchField_Txt">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 30]"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="SearchBtn">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6b" green="18" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cari"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchBtnActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="CB_Category">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Day-1"/>
+                <StringItem index="1" value="Day-2"/>
+                <StringItem index="2" value="Day-3"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

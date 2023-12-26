@@ -5,13 +5,15 @@
 package concertApp.user;
 
 import concertApp.admin.*;
-import concertApp.admin.HomePage;
+import concertApp.admin.HomeAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
@@ -28,7 +30,7 @@ public class ScheduleUser extends javax.swing.JFrame {
     public Statement st;
     public ResultSet rs;
     Connection con = connection.koneksiDB.BukaKoneksi();
-    private JComboBox<String> SingerCB;
+    
 
     /**
      * Creates new form tambahDataKonser
@@ -46,7 +48,6 @@ public class ScheduleUser extends javax.swing.JFrame {
             st = con.createStatement();
             String searchQuery = "SELECT * FROM schedule WHERE id_jadwal LIKE '%" + SearchField.getText()
                     + "%' OR nama_musisi LIKE '%" + SearchField.getText()
-                    + "%' OR negara LIKE '%" + SearchField.getText()
                     + "%' OR tanggal LIKE '%" + SearchField.getText()
                     + "%' OR lokasi LIKE '%" + SearchField.getText() + "%'";
             rs = st.executeQuery(searchQuery);
@@ -55,10 +56,8 @@ public class ScheduleUser extends javax.swing.JFrame {
 
             model.addColumn("ID Jadwal");
             model.addColumn("Musisi");
-            model.addColumn("Negara");
             model.addColumn("Tanggal");
             model.addColumn("Lokasi");
-            model.addColumn("Kuota");
 
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged();
@@ -68,10 +67,8 @@ public class ScheduleUser extends javax.swing.JFrame {
                 Object[] data = {
                     rs.getString("id_jadwal"),
                     rs.getString("nama_musisi"),
-                    rs.getString("negara"),
                     rs.getString("tanggal"),
-                    rs.getString("lokasi"),
-                    rs.getString("kuota")
+                    rs.getString("lokasi")
                 };
                 model.addRow(data);
                 Schedule_Table.setModel(model);
@@ -93,32 +90,42 @@ public class ScheduleUser extends javax.swing.JFrame {
 
             model.addColumn("ID Jadwal");
             model.addColumn("Musisi");
-            model.addColumn("Negara");
+            model.addColumn("Kategori");
             model.addColumn("Tanggal");
             model.addColumn("Lokasi");
-            model.addColumn("Kuota");
 
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged();
             model.setRowCount(0);
 
-            while (rs.next()) {
-                Object[] data = {
-                    rs.getString("id_jadwal"),
-                    rs.getString("nama_musisi"),
-                    rs.getString("negara"),
-                    rs.getString("tanggal"),
-                    rs.getString("lokasi"),
-                    rs.getString("kuota")
-                };
-                model.addRow(data);
+            if (rs.next()) {
+                do {
+                    String currentDate = rs.getString("tanggal");
+
+                    // Assuming currentDate is in the format "dd-MM-yyyy"
+                    SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = inputDateFormat.parse(currentDate);
+
+                    // Create a new SimpleDateFormat with Indonesian locale
+                    SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    String formattedDate = outputDateFormat.format(date);
+
+                    Object[] data = {
+                        rs.getString("id_jadwal"),
+                        rs.getString("nama_musisi"),
+                        rs.getString("kategori"),
+                        formattedDate,
+                        rs.getString("lokasi")
+                    };
+                    model.addRow(data);
+                } while (rs.next());
+
+                // Set the model to the table outside of the loop
                 Schedule_Table.setModel(model);
-
             }
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 
    
@@ -196,6 +203,9 @@ public class ScheduleUser extends javax.swing.JFrame {
 
         SearchField.setPreferredSize(new java.awt.Dimension(75, 30));
 
+        SearchBtn.setBackground(new java.awt.Color(51, 24, 107));
+        SearchBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        SearchBtn.setForeground(new java.awt.Color(255, 255, 255));
         SearchBtn.setText("Cari");
         SearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +260,7 @@ public class ScheduleUser extends javax.swing.JFrame {
     private void backToMenuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backToMenuBtnMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        new HomePage().setVisible(true);
+        new HomeUser().setVisible(true);
     }//GEN-LAST:event_backToMenuBtnMouseClicked
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed

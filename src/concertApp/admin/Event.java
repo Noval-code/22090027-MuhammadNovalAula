@@ -8,7 +8,6 @@ package concertApp.admin;
  *
  * @author muhammad noval aula
  */
-import concertApp.admin.ScheduleAdmin;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
@@ -30,6 +29,8 @@ public class Event extends javax.swing.JFrame {
     public Event() {
         initComponents();
         ShowSingerList();
+        setLocationRelativeTo(null);
+
     }
 
     private void clear() {
@@ -37,9 +38,6 @@ public class Event extends javax.swing.JFrame {
         Singer_Txt.setText("");
         Category_Txt.setText("");
         Country_Txt.setText("");
-
-        SingerId_Txt.setEditable(true);
-
     }
 
     private void ShowSingerList() {
@@ -60,7 +58,7 @@ public class Event extends javax.swing.JFrame {
 
             while (rs.next()) {
                 Object[] data = {
-                    rs.getString("id_musisi"),
+                    rs.getString("id"),
                     rs.getString("nama_musisi"),
                     rs.getString("kategori"),
                     rs.getString("negara"),};
@@ -70,8 +68,47 @@ public class Event extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
+    }
+
+    private void findSinger() {
+        try {
+            st = con.createStatement();
+            String searchQuery = "SELECT * FROM singer WHERE id LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR nama_musisi LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR kategori LIKE '%" + SearchField_Txt.getText()
+                    + "%' OR negara LIKE '%" + SearchField_Txt.getText() + "%'";
+            rs = st.executeQuery(searchQuery);
+
+            DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("ID Musisi");
+            model.addColumn("Musisi");
+            model.addColumn("Kategori");
+            model.addColumn("Negara");
+
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                Object[] data = {
+                    rs.getString("id"),
+                    rs.getString("nama_musisi"),
+                    rs.getString("kategori"),
+                    rs.getString("negara")
+                };
+                model.addRow(data);
+                SingerTable.setModel(model);
+
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, e);
+
+        }
     }
 
     /**
@@ -84,7 +121,7 @@ public class Event extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        FindInput = new javax.swing.JTextField();
+        SearchField_Txt = new javax.swing.JTextField();
         FindBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         SingerTable = new javax.swing.JTable();
@@ -106,13 +143,15 @@ public class Event extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        FindInput.addActionListener(new java.awt.event.ActionListener() {
+        FindBtn.setBackground(new java.awt.Color(51, 24, 107));
+        FindBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        FindBtn.setForeground(new java.awt.Color(255, 255, 255));
+        FindBtn.setText("Cari");
+        FindBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FindInputActionPerformed(evt);
+                FindBtnActionPerformed(evt);
             }
         });
-
-        FindBtn.setText("Cari");
 
         SingerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,6 +180,9 @@ public class Event extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Kategori    :");
 
+        Save_Btn.setBackground(new java.awt.Color(51, 24, 107));
+        Save_Btn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Save_Btn.setForeground(new java.awt.Color(255, 255, 255));
         Save_Btn.setText("simpan");
         Save_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +190,9 @@ public class Event extends javax.swing.JFrame {
             }
         });
 
+        UpdateBtn.setBackground(new java.awt.Color(51, 24, 107));
+        UpdateBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        UpdateBtn.setForeground(new java.awt.Color(255, 255, 255));
         UpdateBtn.setText("ubah");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +200,9 @@ public class Event extends javax.swing.JFrame {
             }
         });
 
+        DeleteBtn.setBackground(new java.awt.Color(51, 24, 107));
+        DeleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         DeleteBtn.setText("hapus");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +210,9 @@ public class Event extends javax.swing.JFrame {
             }
         });
 
+        UndoBtn.setBackground(new java.awt.Color(51, 24, 107));
+        UndoBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        UndoBtn.setForeground(new java.awt.Color(255, 255, 255));
         UndoBtn.setText("batal");
         UndoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,7 +241,7 @@ public class Event extends javax.swing.JFrame {
                         .addComponent(backHome))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(415, 415, 415)
-                        .addComponent(FindInput, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SearchField_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(FindBtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -232,7 +283,7 @@ public class Event extends javax.swing.JFrame {
                 .addComponent(backHome)
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FindInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchField_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FindBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,10 +332,6 @@ public class Event extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FindInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FindInputActionPerformed
-
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
         if (SingerId_Txt.getText().equals("")) {
@@ -294,7 +341,7 @@ public class Event extends javax.swing.JFrame {
             if (jawab == 0) {
                 try {
                     st = con.createStatement();
-                    String sql = "DELETE FROM singer WHERE id_musisi = '" + SingerId_Txt.getText() + "'";
+                    String sql = "DELETE FROM singer WHERE id = '" + SingerId_Txt.getText() + "'";
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "data berhail di hapus");
                     ShowSingerList();
@@ -317,7 +364,7 @@ public class Event extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             st = con.createStatement();
-            String cekData = "SELECT * FROM singer WHERE id_musisi = '" + Singer_Txt.getText() + "'";
+            String cekData = "SELECT * FROM singer WHERE id = '" + SingerId_Txt.getText() + "'";
             rs = st.executeQuery(cekData);
 
             if (rs.next()) {
@@ -344,8 +391,9 @@ public class Event extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             String update = "UPDATE singer SET nama_musisi = '" + Singer_Txt.getText()
-                    + "',kategori = '" + Category_Txt.getText() + "',negara = '" + Country_Txt.getText()
-                    + "'WHERE id_musisi = '" + SingerId_Txt.getText() + "'";
+                    + "',kategori = '" + Category_Txt.getText()
+                    + "',negara = '" + Country_Txt.getText()
+                    + "'WHERE id = '" + SingerId_Txt.getText() + "'";
 
             st.executeUpdate(update);
             JOptionPane.showMessageDialog(null, "Data berhasil di update ");
@@ -364,16 +412,19 @@ public class Event extends javax.swing.JFrame {
         Singer_Txt.setText(SingerTable.getValueAt(SingerTable.getSelectedRow(), 1).toString());
         Category_Txt.setText(SingerTable.getValueAt(SingerTable.getSelectedRow(), 2).toString());
         Country_Txt.setText(SingerTable.getValueAt(SingerTable.getSelectedRow(), 3).toString());
-
-        SingerId_Txt.setEditable(false);
     }//GEN-LAST:event_SingerTableMouseClicked
 
     private void backHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backHomeMouseClicked
         // TODO add your handling code here:
-       
+
         this.setVisible(false);
-        new HomePage().setVisible(true);
+        new HomeAdmin().setVisible(true);
     }//GEN-LAST:event_backHomeMouseClicked
+
+    private void FindBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindBtnActionPerformed
+        // TODO add your handling code here:
+        findSinger();
+    }//GEN-LAST:event_FindBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,8 +467,8 @@ public class Event extends javax.swing.JFrame {
     private javax.swing.JTextField Country_Txt;
     private javax.swing.JButton DeleteBtn;
     private javax.swing.JButton FindBtn;
-    private javax.swing.JTextField FindInput;
     private javax.swing.JButton Save_Btn;
+    private javax.swing.JTextField SearchField_Txt;
     private javax.swing.JTextField SingerId_Txt;
     private javax.swing.JTable SingerTable;
     private javax.swing.JTextField Singer_Txt;

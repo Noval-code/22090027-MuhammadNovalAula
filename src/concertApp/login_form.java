@@ -4,7 +4,8 @@
  */
 package concertApp;
 
-import concertApp.admin.HomePage;
+import concertApp.admin.HomeAdmin;
+import concertApp.user.HomeUser;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -270,10 +271,19 @@ public class login_form extends javax.swing.JFrame {
             rs = st.executeQuery(checkAccount);
 
             if (rs.next()) {
-                this.setVisible(false);
-                new HomePage().setVisible(true);
-                JOptionPane.showMessageDialog(rootPane, "anda berhasil masuk");
-                
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin123")) {
+                    this.setVisible(false);
+                    new HomeAdmin().setVisible(true);
+                    JOptionPane.showMessageDialog(rootPane, "anda berhasil masuk");
+                } else {
+                    this.setVisible(false);
+                    new HomeUser().setVisible(true);
+                    JOptionPane.showMessageDialog(rootPane, "anda berhasil masuk");
+
+                }
+
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Maaf username/ Password Salah!");
 
