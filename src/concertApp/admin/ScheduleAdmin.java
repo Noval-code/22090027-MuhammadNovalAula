@@ -38,8 +38,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
     public ScheduleAdmin() {
         initComponents();
         ShowSchedule();
-        fillComboBox();
-
+        fillComboBoxSinger();
         setLocationRelativeTo(null);
     }
 
@@ -131,7 +130,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
         }
     }
 
-    private void fillComboBox() {
+    private void fillComboBoxSinger() {
         try {
             st = con.createStatement();
             rs = st.executeQuery("SELECT nama_musisi FROM singer");
@@ -148,6 +147,10 @@ public class ScheduleAdmin extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -274,7 +277,7 @@ public class ScheduleAdmin extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID Jadwal", "Nama Musisi", "Negara", "Tanggal", "Lokasi"
+                "ID Jadwal", "Nama Musisi", "Kategori", "Tanggal", "Lokasi"
             }
         ));
         Schedule_Table.addMouseListener(new java.awt.event.MouseAdapter() {

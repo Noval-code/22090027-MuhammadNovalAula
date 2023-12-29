@@ -20,7 +20,7 @@ public class koneksiDB {
         public static Connection BukaKoneksi() {
             try {
                 MysqlDataSource m = new MysqlDataSource();
-                m.setDatabaseName("aplikasi_tiketkonser_qr");
+                m.setDatabaseName("app_tiket_konser");
                 m.setUser("root");
                 m.setPassword("");
                 m.setServerName("localhost");

@@ -351,7 +351,7 @@
                   <Table columnCount="5" rowCount="5">
                     <Column editable="true" title="ID Jadwal" type="java.lang.Object"/>
                     <Column editable="true" title="Nama Musisi" type="java.lang.Object"/>
-                    <Column editable="true" title="Negara" type="java.lang.Object"/>
+                    <Column editable="true" title="Kategori" type="java.lang.Object"/>
                     <Column editable="true" title="Tanggal" type="java.lang.Object"/>
                     <Column editable="true" title="Lokasi" type="java.lang.Object"/>
                   </Table>

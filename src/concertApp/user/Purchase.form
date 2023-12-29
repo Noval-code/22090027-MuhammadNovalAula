@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -31,10 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -61,80 +58,71 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel1" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <Component id="jLabel2" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <Component id="jLabel3" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <Component id="jLabel4" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <Component id="jLabel5" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <Component id="jLabel13" alignment="1" min="-2" pref="131" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel1" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel13" alignment="1" min="-2" pref="131" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="Ticket_Txt" min="-2" pref="202" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="choiceScheduleBtn" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="PurchaseID_Txt" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                                              <Component id="Name_Txt" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                                                              <Component id="PurchaseCode_Txt" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="Email_Txt" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" attributes="0">
-                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                  <Component id="jLabel7" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="Date_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
-                                                                  <Component id="TicketPrice_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
-                                                                  <Component id="Kuota_Txt" min="-2" pref="250" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                                  <Group type="102" attributes="0">
-                                                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                                                      <Component id="UndoBtn" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel9" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="TicketAmount_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
-                                                                  <Component id="TotalPrice_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="SaveBtn" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                                      <Component id="UpdateBtn" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                                      <Component id="DeleteBtn" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="Ticket_Txt" min="-2" pref="202" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="choiceScheduleBtn" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="TicketType_Txt" min="-2" pref="280" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                              <Component id="TicketType_Txt" min="-2" pref="280" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="DownloadTicket" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="SaveBtn" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                                                  <Component id="DeleteBtn" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                                  <Component id="UndoBtn" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="DownloadQRTicket" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="PurchaseID_Txt" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                                          <Component id="Name_Txt" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                                                          <Component id="PurchaseCode_Txt" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="Email_Txt" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" attributes="0">
+                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                              <Component id="jLabel7" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="Date_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
+                                                              <Component id="TicketPrice_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
+                                                              <Component id="Kuota_Txt" min="-2" pref="250" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jLabel9" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="TicketAmount_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
+                                                              <Component id="TotalPrice_Txt" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -197,7 +185,7 @@
                       <Component id="Ticket_Txt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="TicketType_Txt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -205,10 +193,9 @@
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SaveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="UpdateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="DeleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="UndoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="DownloadTicket" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="DownloadQRTicket" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -373,23 +360,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="UpdateBtn">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6b" green="18" red="33" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="ubah"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateBtnActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="DeleteBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -424,7 +394,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UndoBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="DownloadTicket">
+        <Component class="javax.swing.JButton" name="DownloadQRTicket">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="6b" green="18" red="33" type="rgb"/>
@@ -438,7 +408,7 @@
             <Property name="text" type="java.lang.String" value="unduh qr"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DownloadTicketActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DownloadQRTicketActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="SearchField_Txt">

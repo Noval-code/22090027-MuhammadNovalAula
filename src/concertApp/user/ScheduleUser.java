@@ -189,14 +189,14 @@ public class ScheduleUser extends javax.swing.JFrame {
 
         Schedule_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID Jadwal", "Nama Musisi", "Negara", "Tanggal", "Lokasi", "Kuota"
+                "ID Jadwal", "Nama Musisi", "Tanggal", "Lokasi"
             }
         ));
         jScrollPane1.setViewportView(Schedule_Table);
@@ -238,7 +238,7 @@ public class ScheduleUser extends javax.swing.JFrame {
                     .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(357, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

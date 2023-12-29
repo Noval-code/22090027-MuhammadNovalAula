@@ -291,6 +291,10 @@ public class Ticket extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
+            if(TicketID_Txt.getText().equals("") && Ticket_Txt.getText().equals("")
+             && TicketType_Txt.getText().equals("") && TicketPrice_Txt.getText().equals("") && Kuota_Txt.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "data tidak boleh kosong");
+            }
             st = con.createStatement();
             String cekData = "SELECT * FROM tickets WHERE id = '" + TicketID_Txt.getText() + "'";
             rs = st.executeQuery(cekData);
@@ -320,12 +324,11 @@ public class Ticket extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
-            String update = "UPDATE singer SET id = '" + TicketID_Txt.getText()
-                    + "',nama = '" + Ticket_Txt.getText()
+            String update = "UPDATE tickets SET nama = '"+ Ticket_Txt.getText()
                     + "',jenis = '" + TicketType_Txt.getText()
-                    + ", harga = '" + TicketPrice_Txt.getText()
-                    + ", kuota = '" + Kuota_Txt.getText()
-                    + "'WHERE id_musisi = '" + TicketID_Txt.getText() + "'";
+                    + "', harga = '" + TicketPrice_Txt.getText()
+                    + "', kuota = '" + Kuota_Txt.getText()
+                    + "'WHERE id = '" + TicketID_Txt.getText() + "'";
 
             st.executeUpdate(update);
             JOptionPane.showMessageDialog(null, "Data berhasil di update ");
@@ -357,7 +360,7 @@ public class Ticket extends javax.swing.JFrame {
             if (jawab == 0) {
                 try {
                     st = con.createStatement();
-                    String sql = "DELETE FROM singer WHERE id_musisi = '" + TicketID_Txt.getText() + "'";
+                    String sql = "DELETE FROM tickets WHERE id = '" + TicketID_Txt.getText() + "'";
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "data berhail di hapus");
                     ShowTicketList();

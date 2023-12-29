@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Event extends javax.swing.JFrame {
+public class singer extends javax.swing.JFrame {
 
     /**
      * Creates new form TambahTiket
@@ -26,7 +26,7 @@ public class Event extends javax.swing.JFrame {
     public ResultSet rs;
     Connection con = connection.koneksiDB.BukaKoneksi();
 
-    public Event() {
+    public singer() {
         initComponents();
         ShowSingerList();
         setLocationRelativeTo(null);
@@ -106,7 +106,7 @@ public class Event extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(singer.class.getName()).log(Level.SEVERE, null, e);
 
         }
     }
@@ -363,6 +363,9 @@ public class Event extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
+            if(SingerId_Txt.getText().equals("") && Singer_Txt.getText().equals("") && Category_Txt.getText().equals("") && Country_Txt.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "data tidak boleh kosong");
+            }
             st = con.createStatement();
             String cekData = "SELECT * FROM singer WHERE id = '" + SingerId_Txt.getText() + "'";
             rs = st.executeQuery(cekData);
@@ -443,21 +446,23 @@ public class Event extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(singer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(singer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(singer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Event.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(singer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Event().setVisible(true);
+                new singer().setVisible(true);
             }
         });
     }

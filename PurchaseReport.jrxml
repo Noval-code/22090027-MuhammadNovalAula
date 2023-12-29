@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PurchaseReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41a49eaa-83d9-440e-9af7-218d81de1040">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM purchase]]>
+	</queryString>
+	<field name="id_pembelian" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_pembelian"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_pembelian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="kode_pembelian" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="kode_pembelian"/>
+		<property name="com.jaspersoft.studio.field.label" value="kode_pembelian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="nama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="tiket" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tiket"/>
+		<property name="com.jaspersoft.studio.field.label" value="tiket"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="jenis_tiket" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis_tiket"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_tiket"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="tanggal" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="harga" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="harga"/>
+		<property name="com.jaspersoft.studio.field.label" value="harga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="jumlah" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.label" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="total_harga" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_harga"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_harga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="purchase"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="4" width="280" height="70" uuid="567a35f9-082e-4bec-b52e-22b49267e133">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PENJUALAN  TIKET KONSER]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="45" width="70" height="15" uuid="393b6424-5749-4c25-bfe7-066b8deafa67"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ID Pembelian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="45" width="83" height="15" uuid="233bd257-e37c-4e1d-b3b2-0082b5cc067e"/>
+				<text><![CDATA[Kode Pembelian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="45" width="66" height="15" uuid="7ede9c97-de4f-4b72-9eac-4c9cc98d9b87"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="45" width="40" height="15" uuid="194aaabf-d737-4c63-b033-14630fdfeeae"/>
+				<text><![CDATA[Tiket]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="45" width="50" height="15" uuid="86f8b5a1-7770-4287-9829-b703e5aa5c9b"/>
+				<text><![CDATA[Jenis Tiket]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="45" width="60" height="15" uuid="82786fa5-cd24-4b35-a3af-aedf3b46f772"/>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="45" width="40" height="15" uuid="0bb7ada2-7980-4022-aaf3-f7a188e8e35d"/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="45" width="60" height="15" uuid="52ae255a-414a-4133-86c2-e858fc2eafe1"/>
+				<text><![CDATA[Total Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="45" width="50" height="15" uuid="330d443c-a6de-4907-bebf-296a0b552df5"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="20" uuid="f682cb8b-17da-4f6a-bf1b-1b7452ad80ff"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_pembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="0" width="81" height="20" uuid="948978ab-b871-4ce7-b14f-a6b2c96d3715"/>
+				<textFieldExpression><![CDATA[$F{kode_pembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="0" width="67" height="20" uuid="75182efe-b677-4b57-9da7-7b2c5301905f"/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="40" height="20" uuid="f6cc2adb-6436-4df7-999e-132e32ef26b9"/>
+				<textFieldExpression><![CDATA[$F{tiket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="0" width="50" height="20" uuid="be9032d1-f176-4c18-afec-335fe90f7c9e"/>
+				<textFieldExpression><![CDATA[$F{jenis_tiket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="48" height="20" uuid="fcd118f7-bfcb-44fd-84f2-5b7f74ffb26b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="0" width="59" height="20" uuid="84bdb647-8016-444a-b90a-bc964733dbb1"/>
+				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="39" height="20" uuid="53327975-13cd-4299-91bf-4af45d8687cc"/>
+				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="2" width="86" height="18" uuid="f2b28fb9-17e7-456d-b6f4-87827002f735"/>
+				<textFieldExpression><![CDATA[$F{total_harga}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="-5" width="556" height="1" uuid="22d98880-85a2-4ee4-817a-2a0758050568"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

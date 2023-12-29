@@ -43,7 +43,7 @@ public class Purchase extends javax.swing.JFrame {
         initComponents();
         generatePurchaseID();
         generatePurchaseDate();
-        generatePurchaseCode("1");
+        generatePurchaseCode("0");
         ShowPurchase();
         setLocationRelativeTo(null);
 
@@ -87,7 +87,7 @@ public class Purchase extends javax.swing.JFrame {
 
     public static void generatePurchaseCode(String ticketKode) {
 
-        // Mendapatkan tanggal, bulan, dan tahun saat ini
+        
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateCode = dateFormat.format(currentDate).replaceAll("-", "");
@@ -95,12 +95,12 @@ public class Purchase extends javax.swing.JFrame {
         String lastID = PurchaseID_Txt.getText().substring(8);
         int lastIDNumber = Integer.parseInt(lastID);
 
-        String userID = userID = String.format("%03d", lastIDNumber);;
+        String userID = String.format("%03d", lastIDNumber);;
 
         // Menggabungkan semua komponen untuk membentuk ID pembelian sebagai integer
-        String pembelianID = ticketKode + userID + dateCode.substring(2, 8);
+        String purchaseCode = ticketKode + userID + dateCode.substring(2, 8);
 
-        PurchaseCode_Txt.setText(pembelianID);
+        PurchaseCode_Txt.setText(purchaseCode);
 
     }
 
@@ -235,7 +235,6 @@ public class Purchase extends javax.swing.JFrame {
             model.addColumn("Tiket");
             model.addColumn("Jenis Tiket");
             model.addColumn("Tanggal Pembelian");
-            model.addColumn("Kuota");
             model.addColumn("Harga");
             model.addColumn("Jumlah");
             model.addColumn("Total Harga");
@@ -280,7 +279,7 @@ public class Purchase extends javax.swing.JFrame {
         TotalPrice_Txt.setText("");
 
         generatePurchaseID();
-        generatePurchaseCode("1");
+        generatePurchaseCode("0");
         generatePurchaseDate();
     }
 
@@ -314,10 +313,9 @@ public class Purchase extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Purchase_Table = new javax.swing.JTable();
         SaveBtn = new javax.swing.JButton();
-        UpdateBtn = new javax.swing.JButton();
         DeleteBtn = new javax.swing.JButton();
         UndoBtn = new javax.swing.JButton();
-        DownloadTicket = new javax.swing.JButton();
+        DownloadQRTicket = new javax.swing.JButton();
         SearchField_Txt = new javax.swing.JTextField();
         SearchBtn = new javax.swing.JButton();
         backToMenuBtn = new javax.swing.JLabel();
@@ -397,16 +395,6 @@ public class Purchase extends javax.swing.JFrame {
             }
         });
 
-        UpdateBtn.setBackground(new java.awt.Color(51, 24, 107));
-        UpdateBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        UpdateBtn.setForeground(new java.awt.Color(255, 255, 255));
-        UpdateBtn.setText("ubah");
-        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateBtnActionPerformed(evt);
-            }
-        });
-
         DeleteBtn.setBackground(new java.awt.Color(51, 24, 107));
         DeleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -427,13 +415,13 @@ public class Purchase extends javax.swing.JFrame {
             }
         });
 
-        DownloadTicket.setBackground(new java.awt.Color(51, 24, 107));
-        DownloadTicket.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        DownloadTicket.setForeground(new java.awt.Color(255, 255, 255));
-        DownloadTicket.setText("unduh qr");
-        DownloadTicket.addActionListener(new java.awt.event.ActionListener() {
+        DownloadQRTicket.setBackground(new java.awt.Color(51, 24, 107));
+        DownloadQRTicket.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DownloadQRTicket.setForeground(new java.awt.Color(255, 255, 255));
+        DownloadQRTicket.setText("unduh qr");
+        DownloadQRTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DownloadTicketActionPerformed(evt);
+                DownloadQRTicketActionPerformed(evt);
             }
         });
 
@@ -482,63 +470,57 @@ public class Purchase extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(PurchaseID_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(Name_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(PurchaseCode_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(Email_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(26, 26, 26)
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jLabel6)
-                                                                .addComponent(jLabel8))
-                                                            .addGap(18, 18, 18)
-                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(Date_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(TicketPrice_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(Kuota_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                    .addGap(50, 50, 50)
-                                                                    .addComponent(UndoBtn))
-                                                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addGap(18, 18, 18)
-                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(TicketAmount_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(TotalPrice_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(SaveBtn)
-                                                    .addGap(50, 50, 50)
-                                                    .addComponent(UpdateBtn)
-                                                    .addGap(50, 50, 50)
-                                                    .addComponent(DeleteBtn))
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(Ticket_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(choiceScheduleBtn))
+                                            .addComponent(TicketType_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(SaveBtn)
+                                                .addGap(66, 66, 66)
+                                                .addComponent(DeleteBtn)
+                                                .addGap(61, 61, 61)
+                                                .addComponent(UndoBtn)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(DownloadQRTicket))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(PurchaseID_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(Name_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(PurchaseCode_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(Email_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(26, 26, 26)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(Ticket_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(choiceScheduleBtn))
-                                                    .addComponent(TicketType_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGap(7, 7, 7))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(DownloadTicket)
-                                            .addGap(90, 90, 90)))
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(jLabel6)
+                                                            .addComponent(jLabel8))
+                                                        .addGap(18, 18, 18)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(Date_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(TicketPrice_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(Kuota_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGap(18, 18, 18)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(TicketAmount_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(TotalPrice_Txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(SearchField_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -585,17 +567,16 @@ public class Purchase extends javax.swing.JFrame {
                     .addComponent(choiceScheduleBtn)
                     .addComponent(Ticket_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TicketType_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveBtn)
-                    .addComponent(UpdateBtn)
                     .addComponent(DeleteBtn)
                     .addComponent(UndoBtn)
-                    .addComponent(DownloadTicket))
+                    .addComponent(DownloadQRTicket))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchField_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -609,15 +590,13 @@ public class Purchase extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -630,11 +609,10 @@ public class Purchase extends javax.swing.JFrame {
 
             String currentDate = Date_Txt.getText();
 
-            // Assuming currentDate is in the format "dd-MM-yyyy"
+           
             SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd-MM-yyyy");
             Date date = inputDateFormat.parse(currentDate);
 
-            // Create a new SimpleDateFormat with Indonesian locale
             SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String formattedDate = outputDateFormat.format(date);
             System.out.println(formattedDate);
@@ -667,7 +645,7 @@ public class Purchase extends javax.swing.JFrame {
 
                 userId++;
                 generatePurchaseID();
-                generatePurchaseCode("1");
+                generatePurchaseCode("0");
                 JOptionPane.showMessageDialog(null, "berhasil melakukan pembelian");
                 clear();
                 ShowPurchase();
@@ -682,22 +660,23 @@ public class Purchase extends javax.swing.JFrame {
 
     }//GEN-LAST:event_SaveBtnActionPerformed
 
-    private void DownloadTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownloadTicketActionPerformed
+    private void DownloadQRTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownloadQRTicketActionPerformed
         // TODO add your handling code here:
         try {
             ByteArrayOutputStream out = QRCode.from(PurchaseCode_Txt.getText())
                     .to(ImageType.PNG).stream();
             String qr_name = PurchaseCode_Txt.getText();
-            String path = "src/barcode/";
+            String path = "C:\\Users\\muhammad noval aula\\Downloads\\barcode\\";
 
             FileOutputStream fous = new FileOutputStream(new File(path + (qr_name + ".png")));
             fous.write(out.toByteArray());
             fous.flush();
+            JOptionPane.showMessageDialog(null, "anda berhasil membuat qr");
         } catch (Exception e) {
             System.out.println(e);
         }
 
-    }//GEN-LAST:event_DownloadTicketActionPerformed
+    }//GEN-LAST:event_DownloadQRTicketActionPerformed
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         // TODO add your handling code here:
@@ -729,29 +708,6 @@ public class Purchase extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TicketAmount_TxtKeyReleased
 
-    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
-        // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            String update = "UPDATE purchase SET nama = '" + Name_Txt.getText()
-                    + "',email = '" + Email_Txt.getText()
-                    + "',tiket = '" + Ticket_Txt.getText()
-                    + "',jenis = '" + TicketType_Txt.getText()
-                    + ", harga = '" + TicketPrice_Txt.getText()
-                    + ", jumlah = '" + TicketAmount_Txt.getText()
-                    + ", total_harga = '" + TotalPrice_Txt.getText()
-                    + "'WHERE id_pembelian = '" + PurchaseID_Txt.getText() + "'";
-
-            st.executeUpdate(update);
-            JOptionPane.showMessageDialog(null, "Data berhasil di update ");
-
-            clear();
-            ShowPurchase();
-        } catch (SQLException ex) {
-            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_UpdateBtnActionPerformed
-
     private void UndoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoBtnActionPerformed
         // TODO add your handling code here:
         clear();
@@ -772,8 +728,9 @@ public class Purchase extends javax.swing.JFrame {
         Ticket_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 4).toString());
         TicketType_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 5).toString());
         Date_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 6).toString());
-        Kuota_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 7).toString());
-        TicketPrice_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 8).toString());
+
+        TicketPrice_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 7).toString());
+        TicketAmount_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 8).toString());
         TotalPrice_Txt.setText(Purchase_Table.getValueAt(Purchase_Table.getSelectedRow(), 9).toString());
     }//GEN-LAST:event_Purchase_TableMouseClicked
 
@@ -789,6 +746,10 @@ public class Purchase extends javax.swing.JFrame {
                     String sql = "DELETE FROM purchase WHERE id_pembelian = '" + PurchaseID_Txt.getText() + "'";
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "data berhail di hapus");
+                    
+                    String updateKuotaQuery = "UPDATE tickets SET kuota = kuota + " + TicketAmount_Txt.getText()
+                            + " WHERE id = '" + getIDTicket() + "'";
+                    st.executeUpdate(updateKuotaQuery);
                     ShowPurchase();
                     clear();
                 } catch (Exception e) {
@@ -840,7 +801,7 @@ public class Purchase extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Date_Txt;
     private javax.swing.JButton DeleteBtn;
-    private javax.swing.JButton DownloadTicket;
+    private javax.swing.JButton DownloadQRTicket;
     public javax.swing.JTextField Email_Txt;
     public static javax.swing.JTextField Kuota_Txt;
     private javax.swing.JTextField Name_Txt;
@@ -856,7 +817,6 @@ public class Purchase extends javax.swing.JFrame {
     public static javax.swing.JTextField Ticket_Txt;
     private javax.swing.JTextField TotalPrice_Txt;
     private javax.swing.JButton UndoBtn;
-    private javax.swing.JButton UpdateBtn;
     private javax.swing.JLabel backToMenuBtn;
     private javax.swing.JButton choiceScheduleBtn;
     private javax.swing.JLabel jLabel1;

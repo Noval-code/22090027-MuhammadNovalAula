@@ -76,7 +76,7 @@ public class ScanQR extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nama", "Musisi", "jenis Tiket", "Status"
+                "title1", "title2", "title3", "title4"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
