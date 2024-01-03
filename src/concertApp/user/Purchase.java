@@ -98,7 +98,7 @@ public class Purchase extends javax.swing.JFrame {
         String userID = String.format("%03d", lastIDNumber);;
 
         // Menggabungkan semua komponen untuk membentuk ID pembelian sebagai integer
-        String purchaseCode = ticketKode + userID + dateCode.substring(2, 8);
+        String purchaseCode = userID + ticketKode + dateCode.substring(2, 8);
 
         PurchaseCode_Txt.setText(purchaseCode);
 
@@ -615,7 +615,6 @@ public class Purchase extends javax.swing.JFrame {
 
             SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String formattedDate = outputDateFormat.format(date);
-            System.out.println(formattedDate);
 
             st = con.createStatement();
             String cekData = "SELECT * FROM purchase WHERE id_pembelian = '" + PurchaseID_Txt.getText() + "'";

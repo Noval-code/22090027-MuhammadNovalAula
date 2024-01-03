@@ -61,6 +61,7 @@ public class ModalTicket extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
+            System.out.println(e);
         }
 
     }
@@ -151,7 +152,7 @@ public class ModalTicket extends javax.swing.JFrame {
         
         String TicketCode = Purchase.Ticket_Txt.getText();
         Purchase.generatePurchaseCode(TicketCode.substring(TicketCode.length() - 1));
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_ModalTicket_TableMouseClicked
 
     /**

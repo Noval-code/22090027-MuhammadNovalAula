@@ -368,7 +368,7 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void exitBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtn1MouseClicked
         // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_exitBtn1MouseClicked
 
     /**
